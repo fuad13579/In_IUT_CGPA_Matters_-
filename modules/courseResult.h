@@ -3,12 +3,15 @@
 
     #include "course.h"
 
-    typedef struct CourseResult
-    {
- Course *course;
+typedef struct CourseResult
+{
+    Course *course;
     double marks;
-    } CourseResult;
+    int completed;
+} CourseResult;
 
- CourseResult createCourseResult(Course *course, double marks);
-    void viewCourseResult(CourseResult result);
-    #endif
+CourseResult createCompletedCourseResult(Course *course, double marks);
+CourseResult createIncompleteCourseResult(Course *course);
+void viewCourseResult(CourseResult result);
+
+#endif
