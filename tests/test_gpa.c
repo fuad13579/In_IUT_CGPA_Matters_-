@@ -6,9 +6,9 @@
 int testCGPA()
 {
     Course courses[3] = {
-        createCourse("CSE 4107", "Structured Programming I", 3.0),
-        createCourse("CSE 4108", "Structured Programming I Lab", 1.5),
-        createCourse("CSE 4203", "Discrete Mathematics", 3.0)
+        createCourse("CSE 4107", "Structured Programming I", 3.0, 1),
+        createCourse("CSE 4108", "Structured Programming I Lab", 1.5, 1),
+        createCourse("CSE 4203", "Discrete Mathematics", 3.0, 2)
     };
     CourseResult results[3] = {
         createCompletedCourseResult(&courses[0], 240),
@@ -21,21 +21,21 @@ int testCGPA()
 
 int testGradePoint()
 {
-    Course course = createCourse("CSE 4107", "Structured Programming I", 3.0);
+    Course course = createCourse("CSE 4107", "Structured Programming I", 3.0, 1);
     CourseResult result = createCompletedCourseResult(&course, 240);
     return getGradePoint(result) == 4.00;
 }
 
 int testLetterGrade()
 {
-    Course course = createCourse("CSE 4108", "Structured Programming I Lab", 1.5);
+    Course course = createCourse("CSE 4108", "Structured Programming I Lab", 1.5, 1);
     CourseResult result = createCompletedCourseResult(&course, 105);
     return getLetterGrade(result)[0] == 'A' && getLetterGrade(result)[1] == '-';
 }
 
 int testIncompleteGradePoint()
 {
-    Course course = createCourse("CSE 4203", "Discrete Mathematics", 3.0);
+    Course course = createCourse("CSE 4203", "Discrete Mathematics", 3.0, 2);
     CourseResult result = createIncompleteCourseResult(&course);
     return getGradePoint(result) == 0.0;
 }
