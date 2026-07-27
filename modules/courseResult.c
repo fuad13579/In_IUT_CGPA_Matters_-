@@ -2,6 +2,8 @@
 #include <string.h>
 #include "courseResult.h"
 
+Course nullCourse = {"NULL", "NULL", 0.0, 0};
+
 CourseResult createCompletedCourseResult(Course *course, double marks)
 {
     CourseResult result;
@@ -63,12 +65,11 @@ static int upperBound(CourseResult results[], int n_results, int semester)
 void filterCourseResultsBySemester(CourseResult results[], int n_results, int semester,
                                    CourseResult filtered[])
 {
-    Course null_course = {"NULL", "NULL", 0.0, 0};
     int start = lowerBound(results, n_results, semester);
     int finish = upperBound(results, n_results, semester);
     int count = 0;
     for (int i = start; i < finish; i++) filtered[count++] = results[i];
-    filtered[count] = createCompletedCourseResult(&null_course, 0.0);
+    filtered[count] = createCompletedCourseResult(&nullCourse, 0.0);
 }
 
 int countCourseResultsBeforeNull(CourseResult results[], int n_results)
